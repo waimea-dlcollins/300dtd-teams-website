@@ -17,25 +17,80 @@
 
 {% block content %}
 
-    <h1>Flask Demo App with Turso DB and User Accounts</h1>
+    <h1>Team Manager Website</h1>
 
-    <p>This is a simple Flask app that connects to a Turso database to save and retrieve data, and also manage user accounts. This can be used as the basis of your web app.</p>
+    <p>This is a simple Flask app that can be used to create and store teams, that are managed by creators.</p>
 
-    <p>It includes...</p>
+<article>
+ <h1>teams:</h1>
+       
+  {% for team in teams %}
 
-    <ul>
-        <li>Example routes</li>
-        <li>Example static pages</li>
-        <li>Missing page and server error pages</li>
-        <li>DB connection and error handling</li>
-        <li>Example CRUD actions: Create and Delete</li>
-        <li>User account creation</li>
-        <li>User login / logout</li>
-        <li>Adaption of menus / routes / content based on login status</li>
-        <li>Flash messages for information</li>
-    </ul>
+    <p>
+    <span class="name">{{ teams.name }}</span> 
+    <span class="code">{{ teams.code }}</span> 
+    <span class="description">{{ teams.description }}</span> 
+    <span class="website">{{ teams.website }}</span> 
+    <span class="manager">{{ teams.manager }}</span> 
 
-    <a href="/things" role="button">Go to the Things...</a>
+    </p>
 
-{% endblock %}
+  {% else %}
+
+    <p>None!</p>
+
+  {% endfor %}
+
+</article>
+
+<article>
+  <article>
+    <form action="/add-team" method="POST">
+      <h1>Add a team</h1>
+      <input
+        type="text"
+        name="name"
+        placeholder="team name"
+        required
+      >
+ 
+      <input
+        type="text"
+        code="code"
+        placeholder="team code"
+        required
+      >
+
+      <input
+        type="text"
+        description="description"
+        placeholder="team description"
+        required
+      >
+
+      <input
+        type="text"
+        website="website"
+        placeholder="team website"
+        required
+      >
+
+      
+      <input
+        type="integer"
+        manager="manager"
+        placeholder="team manager"
+        required
+      >
+     
+ <a href="/" role="button"> add team</a>
+    </form>
+  </article>
+
+  {% endblock %}
+
+
+
+
+
 
